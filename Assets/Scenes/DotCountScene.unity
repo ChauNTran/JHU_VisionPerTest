@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 29085031}
   - component: {fileID: 29085030}
   - component: {fileID: 29085029}
-  - component: {fileID: 29085032}
   - component: {fileID: 29085033}
+  - component: {fileID: 29085034}
+  - component: {fileID: 29085032}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -325,6 +326,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &29085034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29085028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ed87abf3d50204583e4bb094277108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147004854
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +429,6 @@ GameObject:
   - component: {fileID: 197668896}
   - component: {fileID: 197668895}
   - component: {fileID: 197668894}
-  - component: {fileID: 197668897}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -488,7 +500,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374652781}
+      - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: StartNoInput
         m_Mode: 1
@@ -538,22 +550,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197668892}
   m_CullTransparentMesh: 0
---- !u!114 &197668897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197668892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 1330870286}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 1288484069}
-  SavePrompt: {fileID: 0}
 --- !u!1 &257133454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,8 +1104,6 @@ GameObject:
   - component: {fileID: 674127386}
   - component: {fileID: 674127385}
   - component: {fileID: 674127384}
-  - component: {fileID: 674127383}
-  - component: {fileID: 674127382}
   m_Layer: 5
   m_Name: YesSaveBtn
   m_TagString: Untagged
@@ -1137,34 +1131,6 @@ RectTransform:
   m_AnchoredPosition: {x: -52.30002, y: 3.5}
   m_SizeDelta: {x: 257.82892, y: 41.759888}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &674127382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674127380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ed87abf3d50204583e4bb094277108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &674127383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674127380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 0}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 1060230371}
 --- !u!114 &674127384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,7 +1175,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 674127383}
+      - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: YesSaveBtn
         m_Mode: 1
@@ -1342,8 +1308,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374652781}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 803448611}
+        m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: InitHelpTextContent
         m_Mode: 1
         m_Arguments:
@@ -1404,6 +1370,7 @@ GameObject:
   - component: {fileID: 803448610}
   - component: {fileID: 803448609}
   - component: {fileID: 803448608}
+  - component: {fileID: 803448611}
   m_Layer: 5
   m_Name: CountControlBoard
   m_TagString: Untagged
@@ -1495,6 +1462,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &803448611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803448606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MnBdImg: {fileID: 1702265639}
+  MsgTxt: {fileID: 842749809}
+  _input: {fileID: 0}
+  dotSizeInput: {fileID: 1956390606}
+  dotNumberInput: {fileID: 1330870286}
+  helpTxt: {fileID: 427204044}
+  CenterDot: {fileID: 1288484069}
+  SavePrompt: {fileID: 1060230371}
+  mainCamera: {fileID: 29085028}
 --- !u!1 &842749807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1574,7 @@ GameObject:
   - component: {fileID: 889051680}
   - component: {fileID: 889051679}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1669,10 +1657,8 @@ GameObject:
   - component: {fileID: 969711194}
   - component: {fileID: 969711193}
   - component: {fileID: 969711192}
-  - component: {fileID: 969711191}
-  - component: {fileID: 969711190}
   m_Layer: 5
-  m_Name: NoSaveBtn (1)
+  m_Name: NoSaveBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,34 +1684,6 @@ RectTransform:
   m_AnchoredPosition: {x: -52.30002, y: -8.500006}
   m_SizeDelta: {x: 257.82892, y: 41.759888}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &969711190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969711188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ed87abf3d50204583e4bb094277108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &969711191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969711188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 0}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 1060230371}
 --- !u!114 &969711192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1770,7 +1728,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 969711191}
+      - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: NoSaveBtn
         m_Mode: 1
@@ -1832,7 +1790,6 @@ GameObject:
   - component: {fileID: 1008986139}
   - component: {fileID: 1008986138}
   - component: {fileID: 1008986137}
-  - component: {fileID: 1008986136}
   m_Layer: 5
   m_Name: LoadRndDotsBtn
   m_TagString: Untagged
@@ -1860,22 +1817,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -114}
   m_SizeDelta: {x: 193.6, y: 33.595}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1008986136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008986134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 0}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 0}
 --- !u!114 &1008986137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,8 +1861,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1008986136}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 803448611}
+        m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: RepeatBtnClick
         m_Mode: 1
         m_Arguments:
@@ -1981,7 +1922,6 @@ GameObject:
   - component: {fileID: 1060230372}
   - component: {fileID: 1060230375}
   - component: {fileID: 1060230374}
-  - component: {fileID: 1060230373}
   m_Layer: 5
   m_Name: Save Test Prompt
   m_TagString: Untagged
@@ -2011,22 +1951,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1051, y: -158}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1060230373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060230371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 0}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 1060230371}
 --- !u!114 &1060230374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,7 +2182,6 @@ GameObject:
   - component: {fileID: 1330870288}
   - component: {fileID: 1330870287}
   - component: {fileID: 1330870286}
-  - component: {fileID: 1330870289}
   m_Layer: 5
   m_Name: DotNumberInput
   m_TagString: Untagged
@@ -2347,7 +2270,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1330870289}
+      - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: ReadDotNumber
         m_Mode: 1
@@ -2405,22 +2328,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330870283}
   m_CullTransparentMesh: 0
---- !u!114 &1330870289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330870283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 1330870286}
-  helpTxt: {fileID: 258848865}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 0}
 --- !u!1 &1374652776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2340,6 @@ GameObject:
   - component: {fileID: 1374652780}
   - component: {fileID: 1374652779}
   - component: {fileID: 1374652778}
-  - component: {fileID: 1374652781}
   m_Layer: 0
   m_Name: DotCountingBoard
   m_TagString: Untagged
@@ -2525,22 +2431,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1374652781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374652776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 1330870286}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 1288484069}
-  SavePrompt: {fileID: 0}
 --- !u!1 &1377851910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2652,6 @@ GameObject:
   - component: {fileID: 1452842125}
   - component: {fileID: 1452842124}
   - component: {fileID: 1452842123}
-  - component: {fileID: 1452842126}
   m_Layer: 5
   m_Name: EndBtn
   m_TagString: Untagged
@@ -2834,8 +2723,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1452842126}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 803448611}
+        m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: EndTestBtn
         m_Mode: 1
         m_Arguments:
@@ -2884,22 +2773,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452842121}
   m_CullTransparentMesh: 0
---- !u!114 &1452842126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452842121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 1330870286}
-  helpTxt: {fileID: 0}
-  CenterDot: {fileID: 1288484069}
-  SavePrompt: {fileID: 1060230371}
 --- !u!1 &1465991623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,7 +2785,6 @@ GameObject:
   - component: {fileID: 1465991627}
   - component: {fileID: 1465991626}
   - component: {fileID: 1465991625}
-  - component: {fileID: 1465991628}
   m_Layer: 5
   m_Name: BackmainMenuBtn
   m_TagString: Untagged
@@ -2984,8 +2856,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1465991628}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 29085034}
+        m_TargetAssemblyTypeName: MainMenuScrpt, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -3034,18 +2906,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465991623}
   m_CullTransparentMesh: 0
---- !u!114 &1465991628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465991623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ed87abf3d50204583e4bb094277108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1480744809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,7 +3306,6 @@ GameObject:
   - component: {fileID: 1956390608}
   - component: {fileID: 1956390607}
   - component: {fileID: 1956390606}
-  - component: {fileID: 1956390609}
   m_Layer: 5
   m_Name: DotSizeInput
   m_TagString: Untagged
@@ -3535,7 +3394,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1956390609}
+      - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
         m_MethodName: ReadDotSize
         m_Mode: 1
@@ -3546,7 +3405,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -3593,22 +3452,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956390603}
   m_CullTransparentMesh: 0
---- !u!114 &1956390609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956390603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e502dd41f5d3204e862b046c0b206d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 1956390606}
-  helpTxt: {fileID: 147004854}
-  CenterDot: {fileID: 0}
-  SavePrompt: {fileID: 0}
 --- !u!1 &2001946102
 GameObject:
   m_ObjectHideFlags: 0

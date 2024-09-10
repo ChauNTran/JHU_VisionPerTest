@@ -53,25 +53,27 @@ public class DotControlBoard : MonoBehaviour
 {
 
     //mainboard
-    GameObject MnBdImg;
-
-    //green dot on the center
-    GameObject DotCenter;
+    public GameObject MnBdImg;
 
     //change the text 
-    GameObject MsgTxt;
+    public Text MsgTxt;
 
 
     public InputField _input;
+    public InputField dotSizeInput;
+    public InputField dotNumberInput;
+
+    public Text helpTxt;
+    public GameObject CenterDot;
+    public GameObject SavePrompt;//10/2/23
+    public GameObject mainCamera;
+
+    private List<GameObject> RndDots = new List<GameObject>();
 
 
 
-    //public static List<GameObject> RndDots = new List<GameObject>();
-
-
-    
     //only used once. not sure what is this for, comment out for now
-    ServeLib Slb = new ServeLib();
+    //ServeLib Slb = new ServeLib();
 
     //only used once. Seems important in the main control boards
     public static bool ShowDot1 = false;
@@ -92,9 +94,9 @@ public class DotControlBoard : MonoBehaviour
     //read dot size
     public void ReadDotSize()
     {
-        if(_input.text != "")
+        if(dotSizeInput.text != "")
         {
-            Variables.DotSize = Convert.ToInt32(_input.text);
+            Variables.DotSize = Convert.ToInt32(dotSizeInput.text);
             
         }
     }
@@ -102,14 +104,12 @@ public class DotControlBoard : MonoBehaviour
     //read dot number
     public void ReadDotNumber()
     {
-        if(_input.text != "")
+        if(dotNumberInput.text != "")
         {
-            Variables.DotNum = Convert.ToInt32(_input.text);
+            Variables.DotNum = Convert.ToInt32(dotNumberInput.text);
         }
     }
-    public GameObject helpTxt;
-    public GameObject CenterDot;
-    public GameObject SavePrompt;//10/2/23
+
 
     public void InitHelpTextContent()
     {
@@ -117,8 +117,7 @@ public class DotControlBoard : MonoBehaviour
 
         if (Variables.HelpBtnTrueOrFalse == true)
         {
-            helpTxt = GameObject.Find("HelpText");
-            helpTxt.GetComponent<Text>().text = "Operation instruction:" + "\r\n" +
+            helpTxt.text = "Operation instruction:" + "\r\n" +
 
                                                 "1. Enter a dot number and dot size before begginning the dot scene." + "\r\n" + "\r\n" +
                                                 "2. Upon clicking the Start Test button a timer will start, the patient must count the dots on screen as fast as they can." + "\r\n" + "\r\n" +
@@ -136,13 +135,13 @@ public class DotControlBoard : MonoBehaviour
         }
         if (Variables.HelpBtnTrueOrFalse == false)
         {
-            helpTxt = GameObject.Find("HelpText");
-            helpTxt.GetComponent<Text>().text = "";//Added this if statement to go along with my new boolean.
+            helpTxt.text = "";//Added this if statement to go along with my new boolean.
         }
 
     }
 
     //on click is called, the random dots are placed on screen
+    // unused
     public void StartBtnClick()
     {
         
@@ -153,7 +152,6 @@ public class DotControlBoard : MonoBehaviour
         Variables.IsCountStart = true;
 
         //find the mainboard and set its position to a predetermined point
-        MnBdImg = GameObject.Find("MainBoard");
         MnBdImg.transform.position = new Vector3(MnBdImg.transform.position.x, MnBdImg.transform.position.y, -100f);
 
         
@@ -185,8 +183,7 @@ public class DotControlBoard : MonoBehaviour
 
             DateTime dt = DateTime.Now;
 
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Find the green dot at center";
+            MsgTxt.text = "Find the green dot at center";
 
             GenerateDots();
 
@@ -196,8 +193,7 @@ public class DotControlBoard : MonoBehaviour
         {
             //Maybe we can do the checking at the input page later? 
             Variables.HasValidNumberAndSize = false;
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Check Dot size and number selected";
+            MsgTxt.text = "Check Dot size and number selected";
         }
 
 
@@ -217,7 +213,6 @@ public class DotControlBoard : MonoBehaviour
         Variables.IsCountStart = true;
 
         //find the mainboard and set its position to a predetermined point, get that mainboard out of the way
-        MnBdImg = GameObject.Find("MainBoard");
         MnBdImg.transform.position = new Vector3(MnBdImg.transform.position.x, MnBdImg.transform.position.y, -100f);
 
         //Gets the center dot off the screen so we don't see it during the test
@@ -518,8 +513,7 @@ public class DotControlBoard : MonoBehaviour
 
             DateTime dt = DateTime.Now;
 
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Find the green dot at center";
+            MsgTxt.text = "Find the green dot at center";
             
             //Calls generatedots now that we have a list of random dot coordinates that can be publicly accessed.
             GenerateDots();
@@ -530,8 +524,7 @@ public class DotControlBoard : MonoBehaviour
         {
             //Maybe we can do the checking at the input page later? 
             Variables.HasValidNumberAndSize = false;
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Check Dot size and number selected";
+            MsgTxt.text = "Check Dot size and number selected";
         }
 
 
@@ -540,12 +533,7 @@ public class DotControlBoard : MonoBehaviour
 
     //the function calls to create dots based off of list of random dot coordinates
     public void GenerateDots()
-    {
-        //find the camera
-        GameObject cam;
-        cam = GameObject.Find("Main Camera");
-
-        
+    {        
 
 
         Variables.PlayDotStart = true;
@@ -559,8 +547,7 @@ public class DotControlBoard : MonoBehaviour
             Variables.SetupStartTime("DotCountTest");
 
             //store starting time
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Start Counting";
+            MsgTxt.text = "Start Counting";
             
             
 
@@ -570,7 +557,7 @@ public class DotControlBoard : MonoBehaviour
                 GameObject tmpDot = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
                 //assign the sphere to a parent, camera
-                tmpDot.transform.parent = cam.transform;
+                tmpDot.transform.parent = mainCamera.transform;
 
                 //assign position
                 tmpDot.transform.localPosition = new Vector3(Variables.RndDotPos[i].x  , Variables.RndDotPos[i].y  , 100);// IS THIS SUPOSED TO BE 100 or 10???
@@ -583,7 +570,9 @@ public class DotControlBoard : MonoBehaviour
 
                 //assign name
                 tmpDot.name = "Dot" + i.ToString();
-                
+
+                RndDots.Add(tmpDot);
+
                 double xx = Variables.RndDotPos[i].x / Mathf.Sqrt(Mathf.Pow(Variables.RndDotPos[i].x, 2) + Mathf.Pow(Variables.RndDotPos[i].y, 2) + Mathf.Pow(100, 2));//NewStuff
 
                 double yy = Variables.RndDotPos[i].y / Mathf.Sqrt(Mathf.Pow(Variables.RndDotPos[i].x, 2) + Mathf.Pow(Variables.RndDotPos[i].y, 2) + Mathf.Pow(100, 2));//New Stuff
@@ -600,8 +589,7 @@ public class DotControlBoard : MonoBehaviour
         }
         else
         {
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Must end before restart";
+            MsgTxt.text = "Must end before restart";
         }
         
 
@@ -621,8 +609,7 @@ public class DotControlBoard : MonoBehaviour
 
             GenerateDots();
         }else{
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Must end before repeat";
+            MsgTxt.text = "Must end before repeat";
         }
 
         
@@ -639,12 +626,12 @@ public class DotControlBoard : MonoBehaviour
 
         if (IsStartClick){
 
-            for (int i = 0; i < Variables.DotNum; i++)
-                {
-                    string objN = "Dot" + i.ToString();
-                    GameObject tmpDot = GameObject.Find(objN);
-                    Destroy(tmpDot);
-                }
+            foreach (GameObject tmpDot in RndDots)
+            {
+                Destroy(tmpDot);
+            }
+
+            RndDots.Clear();
 
             Variables.IsStart = false;
             Variables.IsCountStart = false;
@@ -654,15 +641,13 @@ public class DotControlBoard : MonoBehaviour
             
 
             
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Finished with " + Variables.DotNum + " dots";
+            MsgTxt.text = "Finished with " + Variables.DotNum + " dots";
             CenterDot.SetActive(true);
 
         }
         else
         {
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Must start before end";
+            MsgTxt.text = "Must start before end";
         }
 
 
@@ -680,12 +665,12 @@ public class DotControlBoard : MonoBehaviour
         if (IsStartClick)
         {
 
-            for (int i = 0; i < Variables.DotNum; i++)
+            foreach (GameObject tmpDot in RndDots)
             {
-                string objN = "Dot" + i.ToString();
-                GameObject tmpDot = GameObject.Find(objN);
                 Destroy(tmpDot);
             }
+
+            RndDots.Clear();
 
             Variables.IsStart = false;
             Variables.IsCountStart = false;
@@ -695,15 +680,13 @@ public class DotControlBoard : MonoBehaviour
 
 
 
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Finished with " + Variables.DotNum + " dots";
+            MsgTxt.text = "Finished with " + Variables.DotNum + " dots";
             CenterDot.SetActive(true);
 
         }
         else
         {
-            MsgTxt = GameObject.Find("MsgText");
-            MsgTxt.GetComponent<Text>().text = "Must start before end";
+            MsgTxt.text = "Must start before end";
         }
 
 

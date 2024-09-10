@@ -9,20 +9,18 @@ using UnityDataPro;
 
 public class LoadImgControl : MonoBehaviour
 {
-    public string Fpath;
     public RawImage LdImg;
-    UnityDataHandle UDH = new UnityDataHandle();
-    GameObject ReadingInfoBoard;
-    GameObject LdImgBoard;                  
-    GameObject ShowImg;
-    public GameObject CenterDot;//New Idea                     
+    public Text ReadingInfoBoard;
+    public GameObject ShowImg;
+    public Transform CenterDot;//New Idea                     
     private Vector3 LdImgInitPos = new Vector3();
-    public GameObject helpTxt;
+    public Text helpTxt;
     public GameObject SavePrompt;
+
+    UnityDataHandle UDH = new UnityDataHandle();
 
     public void InitInfoBoard()
     {
-        ReadingInfoBoard = GameObject.Find("InfoBoard");
         ReadingInfoBoard.GetComponent<Text>().text = "Reading test image file: \r\n" + Variables.PickImgFileName;
     }
     
@@ -33,8 +31,7 @@ public class LoadImgControl : MonoBehaviour
 
         if (Variables.HelpBtnTrueOrFalse == true)
         {
-            helpTxt = GameObject.Find("HelpText");
-            helpTxt.GetComponent<Text>().text = "Operation instruction:" + "\r\n" +
+            helpTxt.text = "Operation instruction:" + "\r\n" +
 
                                                 "1. Press the LOAD IMAGE button, navigate to ReadingImg and select one of the Reading# png's." + "\r\n" + "\r\n" +
                                                 "2. Pressing the START button will spawn the text, a invisible timer will then begin." + "\r\n" + "\r\n" +
@@ -54,8 +51,7 @@ public class LoadImgControl : MonoBehaviour
         }
         if (Variables.HelpBtnTrueOrFalse == false)
         {
-            helpTxt = GameObject.Find("HelpText");
-            helpTxt.GetComponent<Text>().text = "";//Added this if statement to go along with my new boolean.
+            helpTxt.text = "";//Added this if statement to go along with my new boolean.
         }
 
     }
@@ -64,7 +60,6 @@ public class LoadImgControl : MonoBehaviour
 
     public void InitShowImg()
     {
-        ShowImg = GameObject.Find("ShowImg");
         MoveShowImg("Start");// NEW STUFF JOEY
         ShowImg.GetComponent<RawImage>().rectTransform.sizeDelta = new Vector2(800, 640);
         RectTransform rt = ShowImg.GetComponent<RawImage>().rectTransform;
@@ -72,7 +67,6 @@ public class LoadImgControl : MonoBehaviour
 
     public void StartShowImgPos()
     {
-        ShowImg = GameObject.Find("ShowImg");
         ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(0f, 0f, -100f);
     }
     
@@ -137,9 +131,8 @@ public class LoadImgControl : MonoBehaviour
 
     private void SetImagePositionInit()
     {
-        CenterDot = GameObject.Find("CenterDot");//New Idea 
         //Changed this from this: LdImg.rectTransform.position = new Vector3(LdImg.rectTransform.position.x/2, LdImg.rectTransform.position.y/2, 35);
-        LdImg.rectTransform.position = new Vector3(CenterDot.GetComponent<Transform>().position.x, CenterDot.GetComponent<Transform>().position.y, CenterDot.GetComponent<Transform>().position.z - 1);//New Idea
+        LdImg.rectTransform.position = new Vector3(CenterDot.position.x, CenterDot.position.y, CenterDot.position.z - 1);//New Idea
 #pragma warning disable CS0618 // Type or member is obsolete
         LdImg.rectTransform.sizeDelta = new Vector2(280, 200);//Originaly was 140,100, change to 
 
@@ -226,7 +219,6 @@ public class LoadImgControl : MonoBehaviour
         Variables.IsReadingTracking = false;
 
 
-        ReadingInfoBoard = GameObject.Find("InfoBoard");
         Variables.readingMissInfo =  "Test duration = " + Variables.CalculateTestTimeDuration() + " seconds\r\n" +
                                                     "Missing word;" + Variables.MissWord.ToString() + "\r\n" +
                                                     "Wrong word;" + Variables.WrongWord.ToString();
@@ -265,7 +257,6 @@ public class LoadImgControl : MonoBehaviour
     }
     private void MoveShowImg(string str)
     {
-        ShowImg = GameObject.Find("ShowImg");
         if (str == "Finish")
             ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(4000f, 0f, -100f); //changed from 2000 to 4000
 

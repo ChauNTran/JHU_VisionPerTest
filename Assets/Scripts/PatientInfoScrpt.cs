@@ -14,17 +14,18 @@ Alex's update 7/12/23
 
 public class PatientInfoScrpt : MonoBehaviour
 {
-
     public InputField _input;
-    GameObject entTxt;
+    public InputField patientNameInput;
+    public InputField experimenterNameInput;
+    public Text dotSizeInput;
+    public Text dotNumberInput;
+    public InputField minDistanceInput;
+    public Text enteredTxt;
 
     public void UpdateInputInfo()
     {
-        entTxt = GameObject.Find("enteredTxt");
-
-        entTxt.GetComponent<Text>().text = "Patient Name " + Variables.PatientName.ToString() +
+        enteredTxt.text = "Patient Name " + Variables.PatientName.ToString() +
                                             "\r\nExperimenter Name " + Variables.ExperimenterName.ToString();//Added ToString stuff to the Patient Name
-
 
 
         Variables.BuildLogFileNamePart();
@@ -36,35 +37,33 @@ public class PatientInfoScrpt : MonoBehaviour
 
     public void ReadInputPName()
     {
-        if (_input.text != "")
+        if (patientNameInput.text != "")
         {
-            Variables.PatientName = _input.text;
+            Variables.PatientName = patientNameInput.text;
         }
     }
 
     public void ReadInputEName()
     {
-        if (_input.text != "")
+        if (experimenterNameInput.text != "")
         {
-            Variables.ExperimenterName = _input.text;
+            Variables.ExperimenterName = experimenterNameInput.text;
         }
     } 
 
-
-
     public void ReadDotSize()
     {
-        if (_input.text != "")
+        if (dotSizeInput.text != "")
         {
-            Variables.DotSize = Convert.ToInt32(_input.text);
+            Variables.DotSize = Convert.ToInt32(dotSizeInput.text);
         }
     }
 
     public void ReadDotNumber()
     {
-        if (_input.text != "")
+        if (dotNumberInput.text != "")
         {
-            Variables.DotNum = Convert.ToInt32(_input.text);
+            Variables.DotNum = Convert.ToInt32(dotNumberInput.text);
             if (Variables.DotNum <= 9)
                 Variables.MinDistValue = 80;
             else if (9 < Variables.DotNum && Variables.DotNum <= 12)
@@ -83,7 +82,7 @@ public class PatientInfoScrpt : MonoBehaviour
 
     public void ReadMiniDistanceValue()
     {
-        if (_input.text != "")
-            Variables.MinDistValue = Convert.ToSingle(_input.text);
+        if (minDistanceInput.text != "")
+            Variables.MinDistValue = Convert.ToSingle(minDistanceInput.text);
     }
 }

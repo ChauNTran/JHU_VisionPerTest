@@ -7,7 +7,12 @@ public class MainMenuScrpt : MonoBehaviour
 {
     public void GotoTestScene()
     {
-        switch(this.gameObject.name)
+        GotoTestScene(this.gameObject.name);
+    }
+
+    public void GotoTestScene(string sceneName)
+    {
+        switch (sceneName)
         {
             case "ReadParagBtn":
                 SceneManager.LoadScene("ReadingTestScene");
@@ -31,14 +36,14 @@ public class MainMenuScrpt : MonoBehaviour
                 break;
             case "CaliContrastBtn":
                 SceneManager.LoadScene("CaliContrast");
-                break;      
+                break;
             case "QuitBtn":
                 Application.Quit();
                 break;
             case "OrbitBtn":
                 SceneManager.LoadScene("OrbitScene");
                 break;
-        }   
+        }
     }
 
 
