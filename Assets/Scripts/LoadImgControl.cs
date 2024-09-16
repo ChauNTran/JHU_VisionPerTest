@@ -18,7 +18,7 @@ public class LoadImgControl : MonoBehaviour
     public GameObject SavePrompt;
 
     UnityDataHandle UDH = new UnityDataHandle();
-
+    
     public void InitInfoBoard()
     {
         ReadingInfoBoard.GetComponent<Text>().text = "Reading test image file: \r\n" + Variables.PickImgFileName;
@@ -61,13 +61,13 @@ public class LoadImgControl : MonoBehaviour
     public void InitShowImg()
     {
         MoveShowImg("Start");// NEW STUFF JOEY
-        ShowImg.GetComponent<RawImage>().rectTransform.sizeDelta = new Vector2(800, 640);
-        RectTransform rt = ShowImg.GetComponent<RawImage>().rectTransform;
+        //ShowImg.GetComponent<RawImage>().rectTransform.sizeDelta = new Vector2(800, 640);
+        //RectTransform rt = ShowImg.GetComponent<RawImage>().rectTransform;
     }
 
     public void StartShowImgPos()
     {
-        ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(0f, 0f, -100f);
+        //ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(0f, 0f, -100f);
     }
     
     public void OpenFileFolder()
@@ -124,7 +124,7 @@ public class LoadImgControl : MonoBehaviour
        
 #pragma warning restore CS0618 // Type or member is obsolete
           LdImg.texture = www.texture;
-            ShowImg.GetComponent<RawImage>().texture = www.texture;     // get the image 
+            //ShowImg.GetComponent<RawImage>().texture = www.texture;     // get the image 
 
         SetImagePositionInit();
     }
@@ -135,7 +135,6 @@ public class LoadImgControl : MonoBehaviour
         LdImg.rectTransform.position = new Vector3(CenterDot.position.x, CenterDot.position.y, CenterDot.position.z - 1);//New Idea
 #pragma warning disable CS0618 // Type or member is obsolete
         LdImg.rectTransform.sizeDelta = new Vector2(280, 200);//Originaly was 140,100, change to 
-
         Variables.ImgLeft = LdImg.rectTransform.position.x / 2f;
 #pragma warning restore CS0618 // Type or member is obsolete
         Variables.TestDataList.Clear();
@@ -200,8 +199,8 @@ public class LoadImgControl : MonoBehaviour
         Variables.sT = DateTime.Now;
 
         InitShowImg();
-        ShiftLoadImgBoard("MoveIn");
-        LoadImg();
+        //ShiftLoadImgBoard("MoveIn");
+        //LoadImg();
     }
 
 
@@ -257,11 +256,11 @@ public class LoadImgControl : MonoBehaviour
     }
     private void MoveShowImg(string str)
     {
-        if (str == "Finish")
-            ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(4000f, 0f, -100f); //changed from 2000 to 4000
+        //if (str == "Finish")
+        //    ShowImg.GetComponent<RawImage>().rectTransform.position = new Vector3(4000f, 0f, -100f); //changed from 2000 to 4000
 
-        if (str == "Start")
-            ShowImg.transform.position = new Vector3(1000f, 500f, -100f);// changed from 0 and 0 to 1000, 500
+        //if (str == "Start")
+        //    ShowImg.transform.position = new Vector3(1000f, 500f, -100f);// changed from 0 and 0 to 1000, 500
 
     }
   
@@ -270,14 +269,7 @@ public class LoadImgControl : MonoBehaviour
         Variables.IsDataSave = true;
     }
     
-    public void HelpBtnClick()
-    {
-
-        ShowImg = GameObject.Find("ShowImg");
  
-    }
-  
-
     public static void ScreenShotSave()
     {
         Variables.ScreenShotCount++;

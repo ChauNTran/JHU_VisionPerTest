@@ -280,7 +280,7 @@ public class Variables : MonoBehaviour
     public static void CollectEyeInfo()
     {
         double xl = 0, yl = 0, zl = 0, xr = 0, yr = 0, zr = 0;
-        Dll_Eye.GetXY(ref xl, ref yl, ref zl, ref xr, ref yr, ref zr);
+        //Dll_Eye.GetXY(ref xl, ref yl, ref zl, ref xr, ref yr, ref zr);
         OneE CurrD = new OneE();
         CurrD.Left.x = Convert.ToSingle(xl);
         CurrD.Left.y = Convert.ToSingle(yl);

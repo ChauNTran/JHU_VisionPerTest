@@ -17,18 +17,18 @@ public class MasterScrpt : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(LoadEyeTracking());
+        //StartCoroutine(LoadEyeTracking());
     }
 
     IEnumerator LoadEyeTracking()
     {
-        ServeLib sLib = new ServeLib();
-        Variables.dtcBool = sLib.CKSRanipalVer();
+        //ServeLib sLib = new ServeLib();
+        //Variables.dtcBool = sLib.CKSRanipalVer();
 
-        if (Variables.dtcBool)
-        {
-            Dll_Eye.InitViveSR();
-        }
+        //if (Variables.dtcBool)
+        //{
+        //    Dll_Eye.InitViveSR();
+        //}
         yield return new WaitForEndOfFrame();
         //if (!sLib.ChaWenJian())
         //Application.Quit();

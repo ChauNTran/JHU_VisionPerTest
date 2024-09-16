@@ -6,41 +6,31 @@ using UnityServe;
 
 public class ReadingMain : MonoBehaviour
 {
+    [SerializeField] private AudioClip ReadingInstructionAudio;
+    [SerializeField] private AudioClip StartSound;
+    [SerializeField] private AudioClip FinishSound;
+    [SerializeField] private AudioClip DataSavedSound;
+    [SerializeField] private GameObject ShowImg;
+
     private AudioSource PlySound;
-    private GameObject RImage;
-    ServeLib sLib = new ServeLib();
 
     void Start()
     {
+        PlySound = GetComponent<AudioSource>();
 
         Variables.IsReadingInstru = false;
         Variables.IsReadingStart = false;
         Variables.IsReadingEnd = false;
         Variables.IsDataSave = false;
         Variables.IsReadingTracking = false;
-
-        GameObject ReadingInfoBoard;
-        ReadingInfoBoard = GameObject.Find("InfoBoard");
-        ReadingInfoBoard.GetComponent<Text>().text = "Reading Test";
-        Dll_Eye.InitViveSR();
-        RImage = GameObject.Find("ShowImg");
-        GameObject rawImg = GameObject.Find("RawImage");
-        float x, y;
-        x = rawImg.GetComponent<RawImage>().rectTransform.rect.width;
-        y = rawImg.GetComponent<RawImage>().rectTransform.rect.height;
-
-        
-        GameObject conTBd = GameObject.Find("ControlBoard");
-        conTBd.GetComponent<RawImage>().rectTransform.position = new Vector2( x - 180, 400);
-       
+        //Dll_Eye.InitViveSR();
     }
 
     void Update()
     {
         if (Variables.IsReadingInstru)
         {
-            PlySound = GetComponent<AudioSource>();
-            PlySound.clip = Resources.Load<AudioClip>("ReadingInstruction");
+            PlySound.clip = ReadingInstructionAudio;
             PlySound.Play();
             Variables.IsReadingInstru = false;
         }
@@ -48,8 +38,7 @@ public class ReadingMain : MonoBehaviour
 
         if (Variables.IsReadingStart)
         {
-            PlySound = GetComponent<AudioSource>();
-            PlySound.clip = Resources.Load<AudioClip>("Start2");
+            PlySound.clip = StartSound;
             PlySound.Play();
             Variables.IsReadingStart = false;
             Variables.CollectEyeInfo();             
@@ -79,7 +68,7 @@ public class ReadingMain : MonoBehaviour
         {
             Variables.WhichBtnClick = 1;
             Vector3 mousePos = Input.mousePosition;
-            if (mousePos.x < 1500)
+            if (mousePos.x < 2000)
             {
                 Vector3 currPos = mousePos - transform.position;
                 AddOneLine(currPos, "Left");
@@ -93,7 +82,7 @@ public class ReadingMain : MonoBehaviour
         {
             Variables.WhichBtnClick = -1;
             Vector3 mPo = Input.mousePosition;
-            if (mPo.x < 1500)
+            if (mPo.x < 2000)
             {
                 Vector3 currPos = mPo - transform.position;
                 AddOneLine(currPos, "Right");
@@ -111,16 +100,14 @@ public class ReadingMain : MonoBehaviour
 
         if (Variables.IsReadingEnd)
         {
-            PlySound = GetComponent<AudioSource>();
-            PlySound.clip = Resources.Load<AudioClip>("Finish");
+            PlySound.clip = FinishSound;
             PlySound.Play();
             Variables.IsReadingEnd = false;
         }
 
         if (Variables.IsDataSave)
         {
-            PlySound = GetComponent<AudioSource>();
-            PlySound.clip = Resources.Load<AudioClip>("DataSaved");
+            PlySound.clip = DataSavedSound;
             PlySound.Play();
             Variables.IsDataSave = false;
         }
@@ -146,7 +133,7 @@ public class ReadingMain : MonoBehaviour
     {
         GameObject nLine = new GameObject(Variables.lineNamePre + Variables.LineCnt);
         Variables.Marks.Add(nLine);
-        nLine.transform.parent = RImage.transform;
+        nLine.transform.parent = ShowImg.transform;
         nLine.AddComponent<Image>();
         if (lineN == "Left")
             nLine.GetComponent<Image>().color = Color.red;

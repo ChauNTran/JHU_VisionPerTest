@@ -15,7 +15,7 @@ public class DotCntMainScreen : MonoBehaviour
     {
         //Dot1 = GameObject.Find("DotCenter");
         //Dot1.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-        Dll_Eye.InitViveSR();
+        //Dll_Eye.InitViveSR();
         Variables.IsCountStart = false;
         Variables.MinDistFileNameList();
         //if (!sLib.ChaWenJian())
