@@ -49,11 +49,10 @@ public class MainMenuScrpt : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        SceneManager.LoadScene("MainMenuScene");
         Variables.IsDotCount = false;
         Variables.IsReading = false;
-        SceneManager.LoadScene("MainMenuScene");
         Variables.counterForTest = 1;//New Stuff
-        DotControlBoard.RoundCount = 0;//New Stuff 10_17_23
     }
 
 }

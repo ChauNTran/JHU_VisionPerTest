@@ -90,8 +90,13 @@ public class DotControlBoard : MonoBehaviour
     public static int maxY = 40;
     public static int RoundCount = 0;
 
+    private void Start()
+    {
+        RoundCount = 0;
+    }
 
     //read dot size
+
     public void ReadDotSize()
     {
         if(dotSizeInput.text != "")
@@ -217,7 +222,6 @@ public class DotControlBoard : MonoBehaviour
 
         //Gets the center dot off the screen so we don't see it during the test
         CenterDot.SetActive(false);
-
 
         //dot number limit to non-zero and smaller than 80
         //dot size must be non-zero
