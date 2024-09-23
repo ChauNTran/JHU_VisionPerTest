@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 375307199646297760, guid: 9e3867cb1d8188a45962c7c94784db35,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 55
+      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 375307199646297774, guid: 9e3867cb1d8188a45962c7c94784db35,
         type: 3}
@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 375307199763662865, guid: 9e3867cb1d8188a45962c7c94784db35,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 2487
+      value: 2327
       objectReference: {fileID: 0}
     - target: {fileID: 375307199763662877, guid: 9e3867cb1d8188a45962c7c94784db35,
         type: 3}
@@ -2475,6 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad8f50feb19a1048a9ff92cfe1948ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headsetCamera: {fileID: 1840390039}
   LdImg: {fileID: 255250336}
   ReadingInfoBoard: {fileID: 1274289835}
   ShowImg: {fileID: 971857791}

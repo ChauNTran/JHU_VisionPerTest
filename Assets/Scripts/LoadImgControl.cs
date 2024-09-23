@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using System;
 using UnityDataPro;
-
+using SFB;
 
 public class LoadImgControl : MonoBehaviour
 {
+    public Camera headsetCamera;
     public RawImage LdImg;
     public Text ReadingInfoBoard;
     public GameObject ShowImg;
@@ -18,7 +20,13 @@ public class LoadImgControl : MonoBehaviour
     public GameObject SavePrompt;
 
     UnityDataHandle UDH = new UnityDataHandle();
-    
+    private string imageDirectory;
+
+    private void Start()
+    {
+        imageDirectory = @"C:\RPBANDRAABLog";
+        headsetCamera.cullingMask = 0 << 5;
+    }
     public void InitInfoBoard()
     {
         ReadingInfoBoard.GetComponent<Text>().text = "Reading test image file: \r\n" + Variables.PickImgFileName;
@@ -75,22 +83,33 @@ public class LoadImgControl : MonoBehaviour
         Variables.IsReading = true; 
         Variables.IsReadingInstru = true;
         Variables.helpSwitch = false;
-        Variables.PickImgFileName = UDH.OpenFolderGetFile();       
-        InitInfoBoard();
-        Variables.WhichBtnClick = 0;                                
+        //Variables.PickImgFileName = UDH.OpenFolderGetFile();
+        ExtensionFilter png = new ExtensionFilter("png", "png");
+        ExtensionFilter jpg = new ExtensionFilter("jpg", "jpg");
+        ExtensionFilter jpeg = new ExtensionFilter("jpeg", "jpeg");
+        ExtensionFilter[] extensions = new ExtensionFilter[] { png, jpg, jpeg };
+        string[] imagePaths = StandaloneFileBrowser.OpenFilePanel("Open Image File", imageDirectory, extensions, false);
 
-        if (Variables.PickImgFileName != null)
+        if(imagePaths.Length == 0)
         {
-            Variables.DataFileName = Variables.PickImgFileName;
-        }
-        else
             System.Windows.Forms.MessageBox.Show("not able to open folder!");
+            return;
+        }
 
-        Variables.SetupStartTime("Reading Test");
+        List<string> splits = imagePaths[0].Split('\\').ToList();
+        splits.RemoveAt(splits.Count-1);
+        imageDirectory = string.Join('\\', splits);
+
+        Variables.PickImgFileName = imagePaths[0];
+        Variables.DataFileName = Variables.PickImgFileName;
+        Variables.WhichBtnClick = 0;
         Variables.IsReadingInstru = true;
         Variables.LineCnt = 0;
         Variables.lineNamePre = "line";
         Variables.IsReadingTracking = true;
+        Variables.SetupStartTime("Reading Test");
+
+        InitInfoBoard();
         ShiftLoadImgBoard("Load");
         LoadImg();
 
@@ -127,6 +146,8 @@ public class LoadImgControl : MonoBehaviour
             //ShowImg.GetComponent<RawImage>().texture = www.texture;     // get the image 
 
         SetImagePositionInit();
+
+        headsetCamera.cullingMask = 0 << 5;
     }
 
     private void SetImagePositionInit()
@@ -197,7 +218,7 @@ public class LoadImgControl : MonoBehaviour
         Variables.MissWord = 0;
         Variables.WrongWord = 0;
         Variables.sT = DateTime.Now;
-
+        headsetCamera.cullingMask = 1 << 5;
         InitShowImg();
         //ShiftLoadImgBoard("MoveIn");
         //LoadImg();
@@ -216,7 +237,7 @@ public class LoadImgControl : MonoBehaviour
         Variables.SetupEndTime();//Gets called and records the test end time
         Variables.IsReadingEnd = true;
         Variables.IsReadingTracking = false;
-
+        headsetCamera.cullingMask = 0 << 5;
 
         Variables.readingMissInfo =  "Test duration = " + Variables.CalculateTestTimeDuration() + " seconds\r\n" +
                                                     "Missing word;" + Variables.MissWord.ToString() + "\r\n" +
@@ -279,7 +300,7 @@ public class LoadImgControl : MonoBehaviour
         screenShot.Apply();
 
         byte[] byteArr = screenShot.EncodeToJPG();
-        System.IO.File.WriteAllBytes(@"C:\RPBANDRAAPLog\Read_" + Variables.LogNamePart + Variables.ScreenShotCount + "Shot.jpg", byteArr);
+        System.IO.File.WriteAllBytes(@"C:\RPBANDRAABLog\Read_" + Variables.LogNamePart + Variables.ScreenShotCount + "Shot.jpg", byteArr);
         //Variables.ScreenShotSave to the above code's name.
 
         /**

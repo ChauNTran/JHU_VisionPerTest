@@ -471,9 +471,9 @@ public class DotControlBoard : MonoBehaviour
                 Variables.RndDotPos = matrix[index];
                 //Debug.Log("List chosen: "+Variables.RndDotPos);
                 Variables.SetUsed = "You used set Devin"+(Variables.DotNum);
-                Debug.Log("List chosen: "+Variables.SetUsed);
+                //Debug.Log("List chosen: "+Variables.SetUsed);
                 Variables.DotNum = (matrix[index]).Count;
-                //Debug.Log("list length: "+Variables.DotNum);
+                Debug.Log("list length: "+Variables.DotNum);
             }
             if (RoundCount == 2)
             {   //ReadDotNumber();
@@ -481,10 +481,10 @@ public class DotControlBoard : MonoBehaviour
                 Variables.RndDotPos = matrix[index];
                 //Debug.Log("List chosen: "+Variables.RndDotPos);
                 Variables.SetUsed = "You used set Devin"+(Variables.DotNum);
-                Debug.Log("List chosen: "+Variables.SetUsed);
+                //Debug.Log("List chosen: "+Variables.SetUsed);
                 Variables.DotNum = (matrix[index]).Count;
-                //Debug.Log("list length: "+Variables.DotNum);
-            
+                Debug.Log("list length: "+Variables.DotNum);
+
             }
             if (RoundCount == 3)
             {   //ReadDotNumber();
@@ -492,9 +492,9 @@ public class DotControlBoard : MonoBehaviour
                 Variables.RndDotPos = matrix[index];
                 //Debug.Log("List chosen: "+Variables.RndDotPos);
                 Variables.SetUsed = "You used set Devin"+(Variables.DotNum);
-                Debug.Log("List chosen: "+Variables.SetUsed);
+                //Debug.Log("List chosen: "+Variables.SetUsed);
                 Variables.DotNum = (matrix[index]).Count;
-                //Debug.Log("list length: "+Variables.DotNum);
+                Debug.Log("list length: "+Variables.DotNum);
             
             }
 
@@ -604,7 +604,7 @@ public class DotControlBoard : MonoBehaviour
 
 
         if (IsStartClick){
-
+            CenterDot.SetActive(false);
             //not sure what is this for
             Variables.IsDotCount = true;
 

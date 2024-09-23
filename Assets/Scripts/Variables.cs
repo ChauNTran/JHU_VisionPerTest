@@ -178,10 +178,10 @@ public class Variables : MonoBehaviour
     public static void MinDistFileNameList()
     {
         MinDistFileList.Clear();
-        MinDistFileList.Add(@"C:\RPBANDRAAPLog\RndGridList\MinDistance_80_Unity.txt");
-        MinDistFileList.Add(@"C:\RPBANDRAAPLog\RndGridList\MinDistance_60_Unity.txt");
-        MinDistFileList.Add(@"C:\RPBANDRAAPLog\RndGridList\MinDistance_40_Unity.txt");
-        MinDistFileList.Add(@"C:\RPBANDRAAPLog\RndGridList\MinDistance_20_Unity.txt");
+        MinDistFileList.Add(@"C:\RPBANDRAABLog\RndGridList\MinDistance_80_Unity.txt");
+        MinDistFileList.Add(@"C:\RPBANDRAABLog\RndGridList\MinDistance_60_Unity.txt");
+        MinDistFileList.Add(@"C:\RPBANDRAABLog\RndGridList\MinDistance_40_Unity.txt");
+        MinDistFileList.Add(@"C:\RPBANDRAABLog\RndGridList\MinDistance_20_Unity.txt");
     }
     
 
@@ -220,9 +220,9 @@ public class Variables : MonoBehaviour
     
     public static void CaliContrastAllowed()
     {
-        IsCaliContrast = SrLib.CheckUnityPerMission(@"C:\RPBANDRAAPLog\CaliContrast.csv");
+        IsCaliContrast = SrLib.CheckUnityPerMission(@"C:\RPBANDRAABLog\CaliContrast.csv");
 
-        string fNm = @"C:\RPBANDRAAPLog\CaliContrast.csv";
+        string fNm = @"C:\RPBANDRAABLog\CaliContrast.csv";
         StreamReader sr = new StreamReader(fNm);
         if (File.Exists(fNm))
             IsCaliContrast = true;
@@ -298,41 +298,41 @@ public class Variables : MonoBehaviour
 
         if (StrN == "Reading_Eye")
         {
-            //this for loop should check the RPBANDRAAPLog for files that match the description. Once it finds one that doesn't exist it should stop. And assign the nonexisting number as the new counter so this next file will be created.
+            //this for loop should check the RPBANDRAABLog for files that match the description. Once it finds one that doesn't exist it should stop. And assign the nonexisting number as the new counter so this next file will be created.
             for (int i = 1; ; i++)
             {
-                if (!File.Exists(@"C:\RPBANDRAAPLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
+                if (!File.Exists(@"C:\RPBANDRAABLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
                 {
                     Variables.counterForTest = i;
                     break;
                 }
             }
-            WriteTrackLogData(@"C:\RPBANDRAAPLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "Reading");
+            WriteTrackLogData(@"C:\RPBANDRAABLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "Reading");
         }
         if (StrN == "DotCount_Eye") {
 
             for (int i = 1; ; i++)
             {
-                if (!File.Exists(@"C:\RPBANDRAAPLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
+                if (!File.Exists(@"C:\RPBANDRAABLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
                 {
                     Variables.counterForTest = i;
                     break;
                 }
             }
-            WriteTrackLogData(@"C:\RPBANDRAAPLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "wDotCount_Eye");
+            WriteTrackLogData(@"C:\RPBANDRAABLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "wDotCount_Eye");
         }
         //Added this a Dot Orbit version so it will get its own excel files seperate from the others. 
         if (StrN == "DotOrbit_Eye")
         {
             for (int i = 1; ; i++)
             {
-                if (!File.Exists(@"C:\RPBANDRAAPLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
+                if (!File.Exists(@"C:\RPBANDRAABLog\" + StrN + "_" + i + Variables.LogNamePart + ".csv"))
                 {
                     Variables.counterForTest = i;
                     break;
                 }
             }
-            WriteTrackLogData(@"C:\RPBANDRAAPLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "DotOrbit_Eye");
+            WriteTrackLogData(@"C:\RPBANDRAABLog\" + StrN + "_" + Variables.counterForTest + Variables.LogNamePart + ".csv", "DotOrbit_Eye");
         }
     }
     

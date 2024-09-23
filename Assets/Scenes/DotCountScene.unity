@@ -542,7 +542,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 803448611}
         m_TargetAssemblyTypeName: DotControlBoard, Assembly-CSharp
-        m_MethodName: StartNoInput
+        m_MethodName: StartBtnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
