@@ -328,22 +328,35 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4910413093555492154, guid: 9e3867cb1d8188a45962c7c94784db35,
+        type: 3}
+      propertyPath: capture
+      value: 
+      objectReference: {fileID: 2010028319}
     m_RemovedComponents:
-    - {fileID: 375307199415554455, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
-    - {fileID: 375307199763662866, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
-    - {fileID: 375307199763662879, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects:
     - {fileID: 375307199375564548, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
     - {fileID: 375307199500451128, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
     - {fileID: 375307200205892175, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
     - {fileID: 375307199415554452, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 375307198475216413, guid: 9e3867cb1d8188a45962c7c94784db35,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1483727957}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3867cb1d8188a45962c7c94784db35, type: 3}
+--- !u!114 &27133773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4910413093555492154, guid: 9e3867cb1d8188a45962c7c94784db35,
+    type: 3}
+  m_PrefabInstance: {fileID: 27133772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51ac6a358527514cb027efd4731a46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &58380485
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,12 +800,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &280787271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 375307199376087981, guid: 9e3867cb1d8188a45962c7c94784db35,
-    type: 3}
-  m_PrefabInstance: {fileID: 27133772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398203850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1114,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1483727957}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EyesTracking, Assembly-CSharp
         m_MethodName: StopCapture
         m_Mode: 1
@@ -1119,7 +1126,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1483727957}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EyesTracking, Assembly-CSharp
         m_MethodName: StopLogging
         m_Mode: 1
@@ -2596,6 +2603,7 @@ MonoBehaviour:
   FinishSound: {fileID: 8300000, guid: 52ec1e5cadc58ab45b86f083891fad7e, type: 3}
   DataSavedSound: {fileID: 8300000, guid: 39668e487dd0beb41aa15b98dc45fcc8, type: 3}
   ShowImg: {fileID: 971857791}
+  eyesTracking: {fileID: 27133773}
 --- !u!20 &963194232
 Camera:
   m_ObjectHideFlags: 0
@@ -3199,12 +3207,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!4 &1161511205 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 375307199910340739, guid: 9e3867cb1d8188a45962c7c94784db35,
-    type: 3}
-  m_PrefabInstance: {fileID: 27133772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252643282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,7 +3614,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1483727957}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EyesTracking, Assembly-CSharp
         m_MethodName: StartCapture
         m_Mode: 1
@@ -3624,7 +3626,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1483727957}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EyesTracking, Assembly-CSharp
         m_MethodName: StartLogging
         m_Mode: 1
@@ -3789,32 +3791,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421233114}
   m_CullTransparentMesh: 0
---- !u!1 &1483727956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 375307198475216413, guid: 9e3867cb1d8188a45962c7c94784db35,
-    type: 3}
-  m_PrefabInstance: {fileID: 27133772}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1483727957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483727956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51ac6a358527514cb027efd4731a46e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capture: {fileID: 2010028319}
-  floatingGazeTargetDistance: 5
-  gazeTarget: {fileID: 280787271}
-  fixationPointTransform: {fileID: 1836159795}
-  leftEyeTransform: {fileID: 1744187138}
-  rightEyeTransform: {fileID: 1161511205}
-  xrCamera: {fileID: 1840390039}
-  gazeDataSource: 1
 --- !u!1 &1497993425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,18 +4307,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668589358}
   m_CullTransparentMesh: 0
---- !u!4 &1744187138 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 375307199095851890, guid: 9e3867cb1d8188a45962c7c94784db35,
-    type: 3}
-  m_PrefabInstance: {fileID: 27133772}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1836159795 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 375307200016756299, guid: 9e3867cb1d8188a45962c7c94784db35,
-    type: 3}
-  m_PrefabInstance: {fileID: 27133772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1840390039 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 375307199763662865, guid: 9e3867cb1d8188a45962c7c94784db35,

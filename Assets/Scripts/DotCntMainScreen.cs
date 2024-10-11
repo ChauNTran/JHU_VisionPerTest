@@ -6,8 +6,9 @@ using UnityServe;
 
 public class DotCntMainScreen : MonoBehaviour
 {
-    public static List<GameObject> NewDots;
+    [SerializeField] private EyesTracking eyesTracking;
     private AudioSource PlySound;
+    private static List<GameObject> NewDots;
 
     void Start()
     {
@@ -51,8 +52,15 @@ public class DotCntMainScreen : MonoBehaviour
             Variables.PlayFinish = false;
         }
 
-        if (Variables.IsCountStart)
-            Variables.CollectEyeInfo();
+        if (Variables.IsCountStart && eyesTracking.isTracking)
+            Variables.CollectEyeInfo(
+                eyesTracking.gazeData.left.forward.x,
+                eyesTracking.gazeData.left.forward.y,
+                eyesTracking.gazeData.left.forward.z,
+                eyesTracking.gazeData.right.forward.x,
+                eyesTracking.gazeData.right.forward.y,
+                eyesTracking.gazeData.right.forward.z
+           );
     }
 
 

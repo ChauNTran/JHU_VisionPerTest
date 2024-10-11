@@ -291,6 +291,18 @@ public class Variables : MonoBehaviour
         CurrD.TmStp = DateTime.Now;
         Variables.TestDataList.Add(CurrD);
     }
+    public static void CollectEyeInfo(double xl, double yl, double zl, double xr, double yr, double zr)
+    {
+        OneE CurrD = new OneE();
+        CurrD.Left.x = Convert.ToSingle(xl);
+        CurrD.Left.y = Convert.ToSingle(yl);
+        CurrD.Left.z = Convert.ToSingle(zl);
+        CurrD.Right.x = Convert.ToSingle(xr);
+        CurrD.Right.y = Convert.ToSingle(yr);
+        CurrD.Right.z = Convert.ToSingle(zr);
+        CurrD.TmStp = DateTime.Now;
+        Variables.TestDataList.Add(CurrD);
+    }
 
     public static void FeedOneData(string StrN)
     {
@@ -340,6 +352,10 @@ public class Variables : MonoBehaviour
 
     private static void DataToString(List<OneE> Dlist)
     {
+        if (Dlist.Count == 0)
+            return;
+
+
         TestDataStringList.Clear();
 
         TestDataStringList.Add(BasicTestInfo);

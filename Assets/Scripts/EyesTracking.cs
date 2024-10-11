@@ -55,10 +55,19 @@ public class EyesTracking : MonoBehaviour
     [Header("Gaze data")]
     public GazeDataSource gazeDataSource = GazeDataSource.InputSubsystem;
 
+    public bool isTracking
+    {
+        get
+        {
+            return VarjoEyeTracking.IsGazeAllowed() && VarjoEyeTracking.IsGazeCalibrated();
+        }
+    }
+
     private List<InputDevice> devices = new List<InputDevice>();
     private InputDevice device;
     private Eyes eyes; // unity's
-    private VarjoEyeTracking.GazeData gazeData; // varjo's
+    public VarjoEyeTracking.GazeData gazeData { get; private set; }
+
     private List<VarjoEyeTracking.GazeData> dataSinceLastUpdate;
     private List<VarjoEyeTracking.EyeMeasurements> eyeMeasurementsSinceLastUpdate;
     private StreamWriter writer = null;
@@ -147,7 +156,7 @@ public class EyesTracking : MonoBehaviour
 
     private void Update()
     {
-        if (VarjoEyeTracking.IsGazeAllowed() && VarjoEyeTracking.IsGazeCalibrated())
+        if (isTracking)
         {
             //Get device if not valid
             if (!device.isValid)

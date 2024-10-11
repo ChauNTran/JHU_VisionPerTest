@@ -59,18 +59,23 @@ public class DotControlBoard : MonoBehaviour
     public Text MsgTxt;
 
 
-    public InputField _input;
     public InputField dotSizeInput;
     public InputField dotNumberInput;
+    public InputField visitInput;
+    public Button StartButton;
+    public Button RepeatButton;
+    public Button MainMenuButton;
 
     public Text helpTxt;
+    public Text infoText;
     public GameObject CenterDot;
     public GameObject SavePrompt;//10/2/23
     public GameObject mainCamera;
 
     private List<GameObject> RndDots = new List<GameObject>();
 
-
+    private int seed;
+    private int trialIndex;
 
     //only used once. not sure what is this for, comment out for now
     //ServeLib Slb = new ServeLib();
@@ -93,16 +98,16 @@ public class DotControlBoard : MonoBehaviour
     private void Start()
     {
         RoundCount = 0;
+        trialIndex = 0;
     }
 
     //read dot size
 
     public void ReadDotSize()
     {
-        if(dotSizeInput.text != "")
+        if (dotSizeInput.text != "")
         {
             Variables.DotSize = Convert.ToInt32(dotSizeInput.text);
-            
         }
     }
 
@@ -111,10 +116,20 @@ public class DotControlBoard : MonoBehaviour
     {
         if(dotNumberInput.text != "")
         {
-            Variables.DotNum = Convert.ToInt32(dotNumberInput.text);
+            int offset = UnityEngine.Random.Range(-2, 3);
+            Debug.LogWarning(offset.ToString());
+            Variables.DotNum = Convert.ToInt32(dotNumberInput.text) + offset;
         }
     }
 
+    private void CompileSeed()
+    {
+        if (visitInput.text != "")
+        {
+            seed = Convert.ToInt32(dotSizeInput.text + visitInput.text + trialIndex.ToString());
+            UnityEngine.Random.InitState(seed);
+        }
+    }
 
     public void InitHelpTextContent()
     {
@@ -149,7 +164,13 @@ public class DotControlBoard : MonoBehaviour
     // unused
     public void StartBtnClick()
     {
-        
+        trialIndex += 1;
+        ReadDotSize();
+        CompileSeed();
+        ReadDotNumber();
+        ToggleInputInteractable(false);
+        ShowInfoText();
+
         //not sure what is this for
         Variables.IsDotCount = true;
 
@@ -210,6 +231,7 @@ public class DotControlBoard : MonoBehaviour
         //Added this to keep the dotsize and dotnum stagnant for only the noinput scene 10_17_23
         Variables.DotSize = 3;
         ReadDotNumber();
+
         Debug.Log("DotNum read: "+Variables.DotNum);
         //not sure what is this for
         Variables.IsDotCount = true;
@@ -654,9 +676,6 @@ public class DotControlBoard : MonoBehaviour
             MsgTxt.text = "Must start before end";
         }
 
-
-
-        ReadDotNumber();
     }
     public void EndNoInput()
     {
@@ -702,9 +721,9 @@ public class DotControlBoard : MonoBehaviour
     {
         SavePrompt.SetActive(false);//10/2/23
         Variables.FeedOneData("DotCount_Eye");
-        
-
+        ToggleInputInteractable(true);
     }
+
     public void NoSaveBtn()
     {
         SavePrompt.SetActive(false);//10/2/23
@@ -738,6 +757,13 @@ public class DotControlBoard : MonoBehaviour
 
     }
 
+
+    public List<Vector2> SeededPosGenerator()
+    {
+
+        List<Vector2> FinalDotPositions = new List<Vector2>();
+        return FinalDotPositions;
+    }
 
     //helper method 1
     //take a 1D array with (x,y) components, return a shuffled version of the array 
@@ -862,5 +888,19 @@ public class DotControlBoard : MonoBehaviour
         tw.Close();
     }
  
- 
+    public void ToggleInputInteractable(bool tog)
+    {
+        dotSizeInput.interactable = tog;
+        dotNumberInput.interactable = tog;
+        visitInput.interactable = tog;
+        StartButton.interactable = tog;
+        RepeatButton.interactable = tog;
+        MainMenuButton.interactable = tog;
+    }
+    private void ShowInfoText()
+    {
+        infoText.text = $"Trial Number: {trialIndex}\n";
+        infoText.text += $"Dots Count: {Variables.DotNum}\n";
+    }
+
 }

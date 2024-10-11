@@ -11,6 +11,7 @@ public class ReadingMain : MonoBehaviour
     [SerializeField] private AudioClip FinishSound;
     [SerializeField] private AudioClip DataSavedSound;
     [SerializeField] private GameObject ShowImg;
+    [SerializeField] private EyesTracking eyesTracking;
 
     private AudioSource PlySound;
 
@@ -24,6 +25,9 @@ public class ReadingMain : MonoBehaviour
         Variables.IsDataSave = false;
         Variables.IsReadingTracking = false;
         //Dll_Eye.InitViveSR();
+
+        // Look for eyestracking object
+
     }
 
     void Update()
@@ -36,12 +40,19 @@ public class ReadingMain : MonoBehaviour
         }
         
 
-        if (Variables.IsReadingStart)
+        if (Variables.IsReadingStart && eyesTracking.isTracking)
         {
             PlySound.clip = StartSound;
             PlySound.Play();
             Variables.IsReadingStart = false;
-            Variables.CollectEyeInfo();             
+            Variables.CollectEyeInfo(
+                eyesTracking.gazeData.left.forward.x,
+                eyesTracking.gazeData.left.forward.y,
+                eyesTracking.gazeData.left.forward.z,
+                eyesTracking.gazeData.right.forward.x,
+                eyesTracking.gazeData.right.forward.y,
+                eyesTracking.gazeData.right.forward.z
+            );
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && Variables.IsReadingTracking)
@@ -60,9 +71,18 @@ public class ReadingMain : MonoBehaviour
         }
         
 
-        if (Variables.IsReadingTracking)
-            Variables.CollectEyeInfo();             
-        
+        if (Variables.IsReadingTracking && eyesTracking.isTracking)
+        {
+            Variables.CollectEyeInfo(
+                eyesTracking.gazeData.left.forward.x,
+                eyesTracking.gazeData.left.forward.y,
+                eyesTracking.gazeData.left.forward.z,
+                eyesTracking.gazeData.right.forward.x,
+                eyesTracking.gazeData.right.forward.y,
+                eyesTracking.gazeData.right.forward.z
+           );
+        }
+
 
         if (Input.GetMouseButtonDown(0) && Variables.IsReadingTracking)
         {
